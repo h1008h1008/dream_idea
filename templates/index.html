@@ -1,0 +1,49 @@
+<!doctype html>
+    <head>
+      <title>Upload new File and your thought</title>
+      <link rel = "stylesheet" href={{url_for('static', filename="css/style.css")}} >
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    </head>
+    <body>
+      <div id="over"></div>
+      <div class = "wrapper">
+        <div class="ring" id = 'load'>Loading
+          <span></span>
+        </div>
+        <div class = "product">
+          <div class = "posterd" id = "posterd">Poster Maker</div> 
+          <div class = "productd" id = "productd">Product Designer</div> 
+          <div class = "info">
+            <div class="animated bounce" style="font-size:1cm;" id="example">Poster Maker!</div> 
+            <form  id = "upload_form"
+            action="" method=post enctype=multipart/form-data>
+                <input type="file" id="fileUploader" class="display-none" onchange="handleFiles(this.files)" name='file'/>
+                <div id="upload-zone" class="upload-zone">
+                    1.請將要更改背景的圖片拖曳至此
+                </div>
+                <div id="preview"></div>
+                <input  id = "thought" placeholder="2.請輸入期望背景長相"  name=thought type=text/>
+                <input class = "btn default" id = "submit" type=submit value=Upload>
+                <div id = productdd >若是沒有靈感，也可以點擊下面的商品提示生成圖片!</div>
+                <div class = "option" id="randtext">A luxury lotion bottle</div>
+                <div class = "option" id="randtext">The toy train</div>
+                <div class = "option" id="randtext">Delicious salmon</div>
+                <div class = "option" id="randtext">modern TV</div>
+                <input class = "btn default" id = "rand" type=button value="隨機生成商品提示">
+            </div
+            ><div class = "poster">
+              <div id = "instr">Your Poster</div>
+          {% if filename1 %}
+              <img class="poster__img" src={{url_for('static', filename=filename1)}}  />
+          {% else %}
+              <img class="poster__img" id = "pimg" src={{url_for('static', filename="images/20230330114934PM.jpg")}}  />
+            
+          {% endif %}
+          </div>
+          <script src={{url_for('static', filename="js/main.js")}}>
+          </script>
+        </div>
+      </div>
+    </body>
